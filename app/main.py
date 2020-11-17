@@ -2,20 +2,21 @@
 This module is the main flask application.
 """
 
+from flask_ngrok import run_with_ngrok
 from flask import Flask, request, render_template
 from blueprints import *
 import cv2
 import numpy as np
 import tensorflow as tf
 import re
-import mahotas
 import base64
 import imutils
 
 app = Flask(__name__)
+run_with_ngrok(app)
 
 model = tf.keras.models.load_model(
-    '/Users/nhanpham/CoderSchool/AI_calculator/model/maths.h5')
+    '/content/gdrive/My Drive/ai_calculator__ver2/app/static/complete.h5')
 label_names = ['0', '1', '2', '3', '4', '5',
                '6', '7', '8', '9' '10', '11', '12']
 
